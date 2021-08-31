@@ -1,9 +1,9 @@
 #include <iostream>
 
-#include "Snake_Nature.h"
+#include "Snake.h"
 using namespace std;
 int main() {
-  Snake_Nature Snake1;
-  Snake1.Pr();
+  Snake_Nature snake1(1, 1, UP);
+  snake1.SnakeMoveDown();
   return 0;
 }
