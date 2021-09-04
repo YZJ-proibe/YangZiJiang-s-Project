@@ -5,52 +5,76 @@
 void Snake_Nature::SnakeMove() {
   int NewPosition_X;
   int NewPosition_Y;
-  int NewDirection = this->SnakePosition[0].SnakeDirection;
-  switch (this->SnakePosition[0].SnakeDirection) {
+  auto SnakeHead = this->SnakePosition.begin();
+  int NewDirection = SnakeHead->SnakeDirection;
+  switch (SnakeHead->SnakeDirection) {
     case UP:
-      NewPosition_X = SnakePosition[0].SnakeNodePosition_X - 1;
-      NewPosition_Y = SnakePosition[0].SnakeNodePosition_Y;
+      NewPosition_X = SnakeHead->SnakeNodePosition_X - 1;
+      NewPosition_Y = SnakeHead->SnakeNodePosition_Y;
       break;
     case DOWN:
-      NewPosition_X = SnakePosition[0].SnakeNodePosition_X + 1;
-      NewPosition_Y = SnakePosition[0].SnakeNodePosition_Y;
+      NewPosition_X = SnakeHead->SnakeNodePosition_X + 1;
+      NewPosition_Y = SnakeHead->SnakeNodePosition_Y;
       break;
     case LEFT:
-      NewPosition_X = SnakePosition[0].SnakeNodePosition_X;
-      NewPosition_Y = SnakePosition[0].SnakeNodePosition_Y - 1;
+      NewPosition_X = SnakeHead->SnakeNodePosition_X;
+      NewPosition_Y = SnakeHead->SnakeNodePosition_Y - 1;
       break;
     case RIGHT:
-      NewPosition_X = SnakePosition[0].SnakeNodePosition_X;
-      NewPosition_Y = SnakePosition[0].SnakeNodePosition_Y + 1;
+      NewPosition_X = SnakeHead->SnakeNodePosition_X;
+      NewPosition_Y = SnakeHead->SnakeNodePosition_Y + 1;
       break;
     default:
       break;
   }
-  int i = SnakePosition.size() - 1;
-  for (; i - 1 >= 0; i--) {
-    SnakePosition[i] = SnakePosition[i - 1];
-  }
-  SnakePosition[0].SnakeDirection = NewDirection;
-  SnakePosition[0].SnakeNodePosition_X = NewPosition_X;
-  SnakePosition[0].SnakeNodePosition_Y = NewPosition_Y;
+  auto SnakeTail = --(this->SnakePosition.end());
+  this->SnakePosition.erase(SnakeTail);
+  Snake_Node NewSnakeHead(NewPosition_X, NewPosition_Y, NewDirection);
+  this->SnakePosition.insert(SnakePosition.begin(), NewSnakeHead);
 }
 
 void Snake_Nature::SnakeMoveUp() {
-  this->SnakePosition[0].SnakeDirection = UP;
+  this->SnakePosition.begin()->SnakeDirection = UP;
   this->SnakeMove();
 }
 
 void Snake_Nature::SnakeMoveDown() {
-  this->SnakePosition[0].SnakeDirection = DOWN;
+  this->SnakePosition.begin()->SnakeDirection = DOWN;
   this->SnakeMove();
 }
 
 void Snake_Nature::SnakeMoveLeft() {
-  this->SnakePosition[0].SnakeDirection = LEFT;
+  this->SnakePosition.begin()->SnakeDirection = LEFT;
   this->SnakeMove();
 }
 
 void Snake_Nature::SnakeMoveRight() {
-  this->SnakePosition[0].SnakeDirection = RIGHT;
+  this->SnakePosition.begin()->SnakeDirection = RIGHT;
   this->SnakeMove();
+}
+
+void Snake_Nature::SnakeControlMove(int SnakeControlMoveDirection) {
+  switch (SnakeControlMoveDirection) {
+    case UP:
+      this->SnakeMoveUp();
+      break;
+    case DOWN:
+      this->SnakeMoveDown();
+      break;
+    case LEFT:
+      this->SnakeMoveLeft();
+      break;
+    case RIGHT:
+      this->SnakeMoveRight();
+      break;
+    default:
+      break;
+  }
+}
+void Snake_Nature::PrintNodePosition() {
+  for (auto x : SnakePosition) {
+    std::cout << '(' << x.SnakeNodePosition_X << ',' << x.SnakeNodePosition_Y
+              << ')' << x.SnakeDirection << std::endl;
+  }
+  std::cout << std::endl;
 }

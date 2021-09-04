@@ -74,5 +74,26 @@
         "*.tcc": "cpp",
         "memory_resource": "cpp",
         "stop_token": "cpp"
-    }
-}
+    },
+    "terminal.integrated.profiles.windows": {
+        "PowerShell -NoProfile": {
+          "source": "PowerShell",
+          "args": [
+            "-NoProfile"
+          ]
+        },
+        "Git-Bash": {
+          "path": "D:\\Program Files\\Git\\bin\\bash.exe",
+          "args": []
+        }
+      },
+    "terminal.integrated.defaultProfile.windows": "Git-Bash",
+      "editor.fontSize": 18,
+      "terminal.integrated.cursorBlinking": true,
+      "terminal.integrated.lineHeight": 1.1,
+      "terminal.integrated.letterSpacing": 0.2,
+      "terminal.integrated.fontSize": 14,
+      "terminal.integrated.fontFamily": "Lucida Console",
+      "terminal.integrated.shell.linux": "/bin/zsh",
+      "code-runner.showExecutionMessage": true,
+  }
