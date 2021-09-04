@@ -41,6 +41,7 @@ class Snake_Nature : public Snake_Node {
   void SnakeMoveRight();
   void SnakeMove();
   void SnakeControlMove(int SnakeControlMoveDirection);
+  bool SnakeIsForbidControlDirection(int SnakeControlMoveDirection);
   void PrintNodePosition();
   void SnakeEatFood();
 

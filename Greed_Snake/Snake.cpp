@@ -34,21 +34,37 @@ void Snake_Nature::SnakeMove() {
 }
 
 void Snake_Nature::SnakeMoveUp() {
+  if (SnakeIsForbidControlDirection(UP)) {
+    return;
+  }
+
   this->SnakePosition.begin()->SnakeDirection = UP;
   this->SnakeMove();
 }
 
 void Snake_Nature::SnakeMoveDown() {
+  if (SnakeIsForbidControlDirection(DOWN)) {
+    return;
+  }
+
   this->SnakePosition.begin()->SnakeDirection = DOWN;
   this->SnakeMove();
 }
 
 void Snake_Nature::SnakeMoveLeft() {
+  if (SnakeIsForbidControlDirection(LEFT)) {
+    return;
+  }
+
   this->SnakePosition.begin()->SnakeDirection = LEFT;
   this->SnakeMove();
 }
 
 void Snake_Nature::SnakeMoveRight() {
+  if (SnakeIsForbidControlDirection(RIGHT)) {
+    return;
+  }
+
   this->SnakePosition.begin()->SnakeDirection = RIGHT;
   this->SnakeMove();
 }
@@ -71,10 +87,26 @@ void Snake_Nature::SnakeControlMove(int SnakeControlMoveDirection) {
       break;
   }
 }
+
 void Snake_Nature::PrintNodePosition() {
   for (auto x : SnakePosition) {
     std::cout << '(' << x.SnakeNodePosition_X << ',' << x.SnakeNodePosition_Y
               << ')' << x.SnakeDirection << std::endl;
   }
   std::cout << std::endl;
+}
+
+bool Snake_Nature::SnakeIsForbidControlDirection(
+    int SnakeControlMoveDirection) {
+  auto Direction = this->SnakePosition.begin()->SnakeDirection;
+  if ((Direction == UP && SnakeControlMoveDirection == DOWN) ||
+      (Direction == DOWN && SnakeControlMoveDirection == UP)) {
+    return true;
+  }
+
+  if ((Direction == LEFT && SnakeControlMoveDirection == RIGHT) ||
+      (Direction == RIGHT && SnakeControlMoveDirection == LEFT)) {
+    return true;
+  }
+  return false;
 }
