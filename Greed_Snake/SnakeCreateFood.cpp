@@ -1,5 +1,5 @@
 #include "SnakeCreateFood.h"
-void CreateFood::CreateSrandFood(Snake_Nature *Snake) {
+void CreateFood::CreateSrandFood(Snake_Nature* Snake) {
   for (int i = 0; i < this->CreateFoodNums; i++) {
     int FoodPosition_X = rand() % WorldHeight;
     int FoodPosition_Y = rand() % WorldWidth;
@@ -12,6 +12,15 @@ void CreateFood::CreateSrandFood(Snake_Nature *Snake) {
     FoodList.push_back(std::make_pair(FoodPosition_X, FoodPosition_Y));
   }
 }
+
+void CreateFood::IsCheckFood(Snake_Nature* Snake,
+                             SnakeTraceDeleteTailNode* TraceTailNode) {
+  if (this->FoodPosition[Snake->SnakeHead_X][Snake->SnakeHead_Y]) {
+    FoodPosition[Snake->SnakeHead_X][Snake->SnakeHead_Y] = 0;
+    Snake->SnakeInsertNode(TraceTailNode);
+  }
+}
+
 void CreateFood::PrFoodPosition() {
   for (auto x : FoodList) {
     std::cout << "Food" << ' ' << x.first << ' ' << x.second << std::endl;
