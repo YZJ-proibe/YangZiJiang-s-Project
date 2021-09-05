@@ -49,5 +49,4 @@ class Snake_Nature : public Snake_Node {
   int SnakeHeadSize = 1;
   int SnakeBodySize = 3;
   std::list<Snake_Node> SnakePosition;
-  //std::unordered_map<int, std::unordered_map<int, int> > SnakeMapvis;
 };
