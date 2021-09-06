@@ -1,3 +1,5 @@
+//#include <graphics.h>
+
 #include <iostream>
 
 #include "ReleaseMemory.h"
@@ -12,7 +14,7 @@ int main() {
 
   CreateMap->SnakeCreateMapObstacle(snake1, FoodNode);
   CreateMap->PrObstaclePosition();
-  
+
   FoodNode->CreateSrandFood(snake1);
   FoodNode->PrFoodPosition();
 

@@ -7,8 +7,8 @@
 #define DOWN 1
 #define LEFT 2
 #define RIGHT 3
-#define WorldWidth 20
-#define WorldHeight 20
+#define WorldWidth 100
+#define WorldHeight 100
 
 
 #ifndef _SNAKE_H_
