@@ -143,7 +143,7 @@ bool Snake_Nature::SnakeIsCrashSelf() {
   int SnakeHead_X = this->SnakePosition.begin()->SnakeNodePosition_X;
   int SnakeHead_Y = this->SnakePosition.begin()->SnakeNodePosition_Y;
   auto SnakeHeadVisTimes = SnakeMapvis[SnakeHead_X][SnakeHead_Y];
-  return SnakeHeadVisTimes > 1;
+  return SnakeHeadVisTimes <= 1;
 }
 
 void Snake_Nature::SnakeInsertNode(SnakeTraceDeleteTailNode* TraceTailNode) {

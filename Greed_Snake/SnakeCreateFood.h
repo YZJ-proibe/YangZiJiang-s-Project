@@ -5,6 +5,7 @@
 class CreateFood;
 class CreateFood {
  public:
+  std::unordered_map<int, std::unordered_map<int, int>> FoodPosition;
   CreateFood(int createfoodnums) : CreateFoodNums(createfoodnums) {}
   ~CreateFood() { FoodPosition.clear(); }
   void CreateSrandFood(Snake_Nature *Snake);
@@ -15,6 +16,5 @@ class CreateFood {
  private:
   int CreateFoodNums;
   std::vector<std::pair<int, int>> FoodList;
-  std::unordered_map<int, std::unordered_map<int, int>> FoodPosition;
 };
 #endif
