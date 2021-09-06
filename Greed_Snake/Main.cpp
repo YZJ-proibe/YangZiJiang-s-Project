@@ -1,5 +1,3 @@
-//#include <graphics.h>
-
 #include <iostream>
 
 #include "ReleaseMemory.h"
